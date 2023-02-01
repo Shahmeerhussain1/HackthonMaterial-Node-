@@ -2,18 +2,10 @@ const Members = require("../Const/Members");
 const MyModel = require("../Model/UserSchema");
 
 const getUser = (req, res) => {
-//   MyModel.findOne(
-//     {
-//       name: "AwanZada",
-//     },
-//     function (err, docs) {
-//       if (err) {
-//         console.log(err);
-//       } else {
-//         console.log(docs);
-//       }
-//     }
-//   );
-  res.status(200).json({ msg: Members });
+  MyModel.find({}, function (err, kittens) {
+    if (err) return console.error(err);
+    console.log(kittens);
+    res.status(200).json({ "Users": kittens });
+  });
 };
 module.exports = getUser;
